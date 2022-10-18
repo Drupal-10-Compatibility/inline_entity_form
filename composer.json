@@ -114,6 +114,9 @@
             "drupal/core": "-p2"
         },
         "patches": {
+            "drupal/inline_entity_form": {
+                "Patch tests for D10 deprecations": "patches/patch-tests-for-deprecations.patch"
+            }
         }
     },
     "scripts": {

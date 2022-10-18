@@ -1,0 +1,52 @@
+diff --git a/tests/src/FunctionalJavascript/InlineEntityFormTestBase.php b/tests/src/FunctionalJavascript/InlineEntityFormTestBase.php
+index ddc505e..6473a36 100644
+--- a/tests/src/FunctionalJavascript/InlineEntityFormTestBase.php
++++ b/tests/src/FunctionalJavascript/InlineEntityFormTestBase.php
+@@ -133,7 +133,7 @@ abstract class InlineEntityFormTestBase extends WebDriverTestBase {
+     $label_key = $entity_type->getKey('label');
+     $bundle_key = $entity_type->getKey('bundle');
+ 
+-    $query = $entity_type_manager->getStorage($entity_type_id)->getQuery();
++    $query = $entity_type_manager->getStorage($entity_type_id)->getQuery()->accessCheck(FALSE);
+     $query->condition($label_key, $label);
+ 
+     if ($bundle && $bundle_key) {
+diff --git a/tests/src/Kernel/Migrate/MigrateFieldInstanceTest.php b/tests/src/Kernel/Migrate/MigrateFieldInstanceTest.php
+index a321e84..dfd03a8 100644
+--- a/tests/src/Kernel/Migrate/MigrateFieldInstanceTest.php
++++ b/tests/src/Kernel/Migrate/MigrateFieldInstanceTest.php
+@@ -15,7 +15,7 @@ class MigrateFieldInstanceTest extends MigrateTestBase {
+   /**
+    * {@inheritdoc}
+    */
+-  public static $modules = [
++  protected static $modules = [
+     'inline_entity_form',
+     'node',
+     'text',
+diff --git a/tests/src/Kernel/Migrate/MigrateFieldInstanceWidgetSettingsTest.php b/tests/src/Kernel/Migrate/MigrateFieldInstanceWidgetSettingsTest.php
+index 3e059a4..0622f37 100644
+--- a/tests/src/Kernel/Migrate/MigrateFieldInstanceWidgetSettingsTest.php
++++ b/tests/src/Kernel/Migrate/MigrateFieldInstanceWidgetSettingsTest.php
+@@ -15,7 +15,7 @@ class MigrateFieldInstanceWidgetSettingsTest extends MigrateTestBase {
+   /**
+    * {@inheritdoc}
+    */
+-  public static $modules = [
++  protected static $modules = [
+     'inline_entity_form',
+     'node',
+     'text',
+diff --git a/tests/src/Kernel/Migrate/MigrateFieldTest.php b/tests/src/Kernel/Migrate/MigrateFieldTest.php
+index 928e79d..f9e8919 100644
+--- a/tests/src/Kernel/Migrate/MigrateFieldTest.php
++++ b/tests/src/Kernel/Migrate/MigrateFieldTest.php
+@@ -15,7 +15,7 @@ class MigrateFieldTest extends MigrateTestBase {
+   /**
+    * {@inheritdoc}
+    */
+-  public static $modules = [
++  protected static $modules = [
+     'node',
+     'text',
+   ];
